@@ -23,6 +23,14 @@
   along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#ifndef _WIN32
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#endif
+#if defined(__FreeBSD__)
+#include <netinet/in.h>
+#endif
+
 #include "UserInteracting.h"
 #include "LibTime.h"
 
