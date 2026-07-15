@@ -131,7 +131,7 @@ Success UserInteracting::process()
 
 		if (key == keyTab)
 		{
-			mInSettings = not mInSettings;
+			mInSettings = !mInSettings;
 			msgMain();
 			break;
 		}
