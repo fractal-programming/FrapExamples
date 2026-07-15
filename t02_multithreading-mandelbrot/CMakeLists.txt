@@ -14,8 +14,11 @@ set(SRCS
     ../deps/SystemCore/TcpListening.cpp
     ../deps/SystemCore/TcpTransfering.cpp
     ../deps/LibNaegCommon/ThreadPooling.cpp
+    ../deps/LibNaegCommon/TelnetFiltering.cpp
+    ../deps/LibNaegCommon/KeyUser.cpp
     ../deps/LibNaegCommon/LibTime.cpp
     ../deps/LibNaegCommon/LibFilesys.cpp
+    ../deps/LibNaegCommon/LibTerminal.cpp
     ../deps/LibNaegCommon/LibDspc.cpp
     ../deps/LibNaegCommon/Res.cpp
     ../deps/LibNaegCommon/LibBmp.cpp
@@ -23,6 +26,8 @@ set(SRCS
     Supervising.cpp
     MandelbrotCreating.cpp
     MandelBlockFilling.cpp
+    UserInteracting.cpp
+    LibMandel.cpp
 )
 
 # =========================
