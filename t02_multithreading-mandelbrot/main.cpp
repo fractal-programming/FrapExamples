@@ -185,10 +185,10 @@ int main(int argc, char *argv[])
 	ValueArg<uint16_t> argPortTelnet("", "port-telnet", "Start in server mode if not zero. Default: 0", false, 0, "uint");
 	cmd.add(argPortTelnet);
 	ValueArg<uint32_t> argImgWidth("", "img-width", "Width of generated image. Default: " cImgWidthDefault,
-								false, atoi(cImgWidthDefault), "uint");
+								false, (uint32_t)atoi(cImgWidthDefault), "uint");
 	cmd.add(argImgWidth);
 	ValueArg<uint32_t> argImgHeight("", "img-height", "Height of generated image. Default: " cImgHeightDefault,
-								false, atoi(cImgHeightDefault), "uint");
+								false, (uint32_t)atoi(cImgHeightDefault), "uint");
 	cmd.add(argImgHeight);
 	ValueArg<double> argPosX("", "pos-x", "X-Position in the complex plane. Default: " cPosXDefault,
 								false, atof(cPosXDefault), "double");
@@ -207,16 +207,16 @@ int main(int argc, char *argv[])
 								false, cTypeDriverDefault, "string");
 	cmd.add(argTypeDriver);
 	ValueArg<uint32_t> argNumIterMax("", "iter-max", "Maximum number of Mandelbrot iterations per pixel. Default: " cNumIterMaxDefault,
-								false, atoi(cNumIterMaxDefault), "uint");
+								false, (uint32_t)atoi(cNumIterMaxDefault), "uint");
 	cmd.add(argNumIterMax);
 	ValueArg<uint32_t> argThreadsPool("", "num-threads-pool", "Number of threads used by the thread-pool. Default: " cNumThreadsPoolDefault,
-								false, atoi(cNumThreadsPoolDefault), "uint");
+								false, (uint32_t)atoi(cNumThreadsPoolDefault), "uint");
 	cmd.add(argThreadsPool);
 	ValueArg<uint32_t> argNumFillers("", "num-fillers", "Number of parallel line filler processes. Default: " cNumFillersDefault,
-								false, atoi(cNumFillersDefault), "uint");
+								false, (uint32_t)atoi(cNumFillersDefault), "uint");
 	cmd.add(argNumFillers);
 	ValueArg<uint32_t> argNumBurst("", "num-burst", "Pixel blocks processed per filler per scheduler tick. Default: " cNumBurstDefault,
-								false, atoi(cNumBurstDefault), "uint");
+								false, (uint32_t)atoi(cNumBurstDefault), "uint");
 	cmd.add(argNumBurst);
 
 	// Parse

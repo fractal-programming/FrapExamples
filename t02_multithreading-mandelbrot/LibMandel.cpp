@@ -78,7 +78,7 @@ static T fractionalIter(
 			size_t numIter)
 {
 	T mag = sqrt(zx * zx + zy * zy);
-	return numIter + 1 - log2(log2((float)mag));
+	return numIter + 1 - log2(log2(mag));
 }
 
 template<typename T>
@@ -99,7 +99,7 @@ static void mandelbrot(
 		xx = zx * zx;
 		yy = zy * zy;
 
-		if (xx + yy > 4.0)
+		if (xx + yy > (T)4.0)
 			break;
 
 		xy = zx * zy;
@@ -188,9 +188,9 @@ static void colorMandelbrotScalar(const ConfigMandelbrot *pCfg, char *pData, siz
 	dbgLog("R/G/B            %3u/%3u/%3u", c.r(), c.g(), c.b());
 #endif
 	// Not RGB but BGR! => BMP specific
-	*pData++ = c.b();
-	*pData++ = c.g();
-	*pData++ = c.r();
+	*pData++ = (char)c.b();
+	*pData++ = (char)c.g();
+	*pData++ = (char)c.r();
 #if 0
 	hexDump(pData - 3, 3, "COLOR SCALAR");
 #endif

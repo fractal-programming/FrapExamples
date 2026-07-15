@@ -48,16 +48,17 @@ public:
 		, mB((ElemColor)b_)
 	{}
 
-	uint8_t r() { return mR; }
-	uint8_t g() { return mG; }
-	uint8_t b() { return mB; }
+	uint8_t r() { return (uint8_t)mR; }
+	uint8_t g() { return (uint8_t)mG; }
+	uint8_t b() { return (uint8_t)mB; }
 
 	Color operator+(const Color &other) const
-	{ return Color(mR + other.mR, mG + other.mG, mB + other.mB); }
+	{ return Color((uint8_t)(mR + other.mR), (uint8_t)(mG + other.mG), (uint8_t)(mB + other.mB)); }
 	Color operator-(const Color &other) const
-	{ return Color(mR - other.mR, mG - other.mG, mB - other.mB); }
-	Color operator*(MbValFull t) const
-	{ return Color(mR * t, mG * t, mB * t); }
+	{ return Color((uint8_t)(mR - other.mR), (uint8_t)(mG - other.mG), (uint8_t)(mB - other.mB)); }
+	template<typename Ts>
+	Color operator*(Ts t) const
+	{ return Color((uint8_t)(mR * t), (uint8_t)(mG * t), (uint8_t)(mB * t)); }
 
 	ElemColor mR;
 	ElemColor mG;
