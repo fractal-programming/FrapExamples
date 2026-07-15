@@ -116,7 +116,9 @@ else
 	args += '-std=gnu++11'
 	args += '-O3'
 	#args += '-ffast-math'
-	args += '-march=native'
+	if not meson.is_cross_build()
+		args += '-march=native'
+	endif
 	args += '-ffp-contract=off'
 endif
 
