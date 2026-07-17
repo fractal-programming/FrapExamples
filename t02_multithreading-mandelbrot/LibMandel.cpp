@@ -58,10 +58,10 @@ static GradientStop keysGradient[] =
 	{1.00,  {  0,   0,   0}}, // back to black
 };
 
-const size_t cScaleGradient = 20;
+const uint32_t cScaleGradient = 20;
 
-const size_t cNumKeysGradient = sizeof(keysGradient) / sizeof(keysGradient[0]);
-const size_t cNumGradients = (cNumKeysGradient - 1) * cScaleGradient + 1;
+const uint32_t cNumKeysGradient = sizeof(keysGradient) / sizeof(keysGradient[0]);
+const uint32_t cNumGradients = (cNumKeysGradient - 1) * cScaleGradient + 1;
 
 static GradientStop gradient[cNumGradients] = {};
 
@@ -75,7 +75,7 @@ static __m256 cOneF, cTwoF, cFourF;
 template<typename T>
 static T fractionalIter(
 			T zx, T zy,
-			size_t numIter)
+			uint32_t numIter)
 {
 	T mag = static_cast<T>(sqrt(zx * zx + zy * zy));
 	return static_cast<T>(numIter + 1 - log2(log2(mag)));
@@ -83,11 +83,11 @@ static T fractionalIter(
 
 template<typename T>
 static void mandelbrot(
-			T cx, T cy, size_t numIterMax,
-			T &zxOut, T &zyOut, size_t &numIterOut)
+			T cx, T cy, uint32_t numIterMax,
+			T &zxOut, T &zyOut, uint32_t &numIterOut)
 {
 	T xx, yy, xy, zx, zy;
-	size_t numIter;
+	uint32_t numIter;
 
 	zx = 0.0;
 	zy = 0.0;
@@ -117,7 +117,7 @@ static void mandelbrot(
 
 // (x, y) -> (r, g, b)
 template<typename T>
-static void colorMandelbrotScalar(const ConfigMandelbrot *pCfg, char *pData, size_t idxLine, size_t idxPixel, size_t &numIter)
+static void colorMandelbrotScalar(const ConfigMandelbrot *pCfg, char *pData, size_t idxLine, size_t idxPixel, uint32_t &numIter)
 {
 	// 1. From image pixel space -> Complex space
 
@@ -135,7 +135,7 @@ static void colorMandelbrotScalar(const ConfigMandelbrot *pCfg, char *pData, siz
 
 	// 2. Do the mandelbrot calculation in complex space
 
-	size_t numIterMax = pCfg->numIterMax;
+	uint32_t numIterMax = pCfg->numIterMax;
 	T zx, zy;
 
 	mandelbrot<T>(cx, cy, numIterMax, zx, zy, numIter);
@@ -153,7 +153,7 @@ static void colorMandelbrotScalar(const ConfigMandelbrot *pCfg, char *pData, siz
 
 	GradientStop *pGrad1, *pGrad2;
 	T mu, t, tMin, tMax;
-	size_t idxGrad1;
+	uint32_t idxGrad1;
 	Color c;
 
 	mu = fractionalIter<T>(zx, zy, numIter);
@@ -166,7 +166,7 @@ static void colorMandelbrotScalar(const ConfigMandelbrot *pCfg, char *pData, siz
 
 	t = PMAX(tMin, PMIN(tMax, t));
 
-	idxGrad1 = (size_t)(t * (cNumGradients - 1));
+	idxGrad1 = (uint32_t)(t * (cNumGradients - 1));
 	idxGrad1 = PMIN(idxGrad1, cNumGradients - 2);
 
 	pGrad1 = &gradient[idxGrad1];
@@ -196,9 +196,9 @@ static void colorMandelbrotScalar(const ConfigMandelbrot *pCfg, char *pData, siz
 #endif
 }
 
-size_t colorMandelbrotScalar(const ConfigMandelbrot *pCfg, char *pData, size_t idxLine, size_t idxPixel)
+uint32_t colorMandelbrotScalar(const ConfigMandelbrot *pCfg, char *pData, size_t idxLine, size_t idxPixel)
 {
-	size_t numIter;
+	uint32_t numIter;
 
 	if (pCfg->useDouble)
 		colorMandelbrotScalar<MbValFull>(pCfg, pData, idxLine, idxPixel, numIter);
@@ -708,7 +708,7 @@ void configPrint(ConfigMandelbrot *pCfg)
 	userInfLog("");
 }
 
-void gradientsGet(GradientStop * &pStart, size_t &numElements)
+void gradientsGet(GradientStop * &pStart, uint32_t &numElements)
 {
 	pStart = gradient;
 	numElements = cNumGradients;

@@ -101,11 +101,11 @@ struct ConfigMandelbrot
 
 void libMandelInit();
 void configPrint(ConfigMandelbrot *pCfg);
-size_t colorMandelbrotScalar(const ConfigMandelbrot *pCfg, char *pData, size_t idxLine, size_t idxPixel);
+uint32_t colorMandelbrotScalar(const ConfigMandelbrot *pCfg, char *pData, size_t idxLine, size_t idxPixel);
 #if APP_HAS_AVX2
 size_t colorMandelbrotSimd(const ConfigMandelbrot *pCfg, char *pData, size_t idxLine, size_t idxPixel);
 #endif
-void gradientsGet(GradientStop * &pStart, size_t &numElements);
+void gradientsGet(GradientStop * &pStart, uint32_t &numElements);
 
 #endif
 

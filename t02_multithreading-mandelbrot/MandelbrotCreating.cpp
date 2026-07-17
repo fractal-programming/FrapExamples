@@ -225,7 +225,7 @@ Success MandelbrotCreating::process()
 Success MandelbrotCreating::vulkanStart()
 {
 	GradientStop *pStartGrad;
-	size_t numElemGrad;
+	uint32_t numElemGrad;
 
 	gradientsGet(pStartGrad, numElemGrad);
 

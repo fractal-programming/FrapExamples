@@ -50,7 +50,7 @@ public:
 	char *mpLine;
 
 	// Input
-	uint32_t mNumIter;
+	size_t mNumIter;
 
 	static void gradientBuild();
 

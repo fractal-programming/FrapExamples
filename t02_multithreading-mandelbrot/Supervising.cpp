@@ -316,12 +316,12 @@ void Supervising::configSet()
 
 	// Filling
 	GradientStop *pStartGrad;
-	size_t numElemGrad;
+	uint32_t numElemGrad;
 
 	gradientsGet(pStartGrad, numElemGrad);
 
 	mCfg.numBurst = env.numBurst;
-	mCfg.numGradients = (uint32_t)numElemGrad;
+	mCfg.numGradients = numElemGrad;
 
 	// Print
 	configPrint(&mCfg);

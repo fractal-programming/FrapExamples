@@ -157,7 +157,7 @@ void MandelBlockFilling::colorMandelbrotChunks(char *pData, uint32_t idxLine, ui
 #endif
 	for (uint32_t i = 0; i < numPixel; ++i)
 	{
-		mNumIter += (uint32_t)colorMandelbrotScalar(mpCfg, pData, idxLine, idxPixel);
+		mNumIter += colorMandelbrotScalar(mpCfg, pData, idxLine, idxPixel);
 
 		pData += cNumBytesPerPixel;
 		++idxPixel;
