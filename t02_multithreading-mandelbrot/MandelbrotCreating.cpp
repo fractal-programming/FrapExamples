@@ -107,7 +107,7 @@ Success MandelbrotCreating::process()
 	uint32_t diffMs = curTimeMs - mStartMs;
 	Success success;
 	bool ok;
-	size_t maskLine = 3;
+	uint32_t maskLine = 3;
 #if 0
 	dStateTrace;
 #endif

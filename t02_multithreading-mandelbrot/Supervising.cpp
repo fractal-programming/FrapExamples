@@ -321,7 +321,7 @@ void Supervising::configSet()
 	gradientsGet(pStartGrad, numElemGrad);
 
 	mCfg.numBurst = env.numBurst;
-	mCfg.numGradients = numElemGrad;
+	mCfg.numGradients = (uint32_t)numElemGrad;
 
 	// Print
 	configPrint(&mCfg);
@@ -475,7 +475,7 @@ bool Supervising::compilerStart()
 
 void Supervising::progressPrint()
 {
-	size_t idxLineDone = mpMbCreate->mIdxLineDone;
+	uint32_t idxLineDone = mpMbCreate->mIdxLineDone;
 
 	if (idxLineDone == mIdxLineDone)
 		return;

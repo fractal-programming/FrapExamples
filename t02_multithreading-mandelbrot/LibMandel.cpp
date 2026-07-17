@@ -77,8 +77,8 @@ static T fractionalIter(
 			T zx, T zy,
 			size_t numIter)
 {
-	T mag = sqrt(zx * zx + zy * zy);
-	return numIter + 1 - log2(log2(mag));
+	T mag = static_cast<T>(sqrt(zx * zx + zy * zy));
+	return static_cast<T>(numIter + 1 - log2(log2(mag)));
 }
 
 template<typename T>
@@ -121,12 +121,12 @@ static void colorMandelbrotScalar(const ConfigMandelbrot *pCfg, char *pData, siz
 {
 	// 1. From image pixel space -> Complex space
 
-	T sxf = pCfg->scaleX;
-	T syf = pCfg->scaleY;
-	T pxf = pCfg->posX;
-	T pyf = pCfg->posY;
-	T w2f = pCfg->w2;
-	T h2f = pCfg->h2;
+	T sxf = static_cast<T>(pCfg->scaleX);
+	T syf = static_cast<T>(pCfg->scaleY);
+	T pxf = static_cast<T>(pCfg->posX);
+	T pyf = static_cast<T>(pCfg->posY);
+	T w2f = static_cast<T>(pCfg->w2);
+	T h2f = static_cast<T>(pCfg->h2);
 
 	T idxX = idxPixel - w2f;
 	T idxY = idxLine - h2f;
@@ -159,7 +159,7 @@ static void colorMandelbrotScalar(const ConfigMandelbrot *pCfg, char *pData, siz
 	mu = fractionalIter<T>(zx, zy, numIter);
 
 	t = mu * (T)0.02;
-	t = t - floor(t);
+	t = t - static_cast<T>(floor(t));
 
 	tMin = 0.0;
 	tMax = 1.0;
